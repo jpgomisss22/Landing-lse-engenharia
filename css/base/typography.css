@@ -1,0 +1,9 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background: white;
+  color: var(--text);
+}
+
+h1,h2 {
+  font-family: 'DM Sans', sans-serif;
+}

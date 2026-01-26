@@ -1,0 +1,24 @@
+@media (max-width: 768px) {
+  .about {
+    padding: 100px 0;
+  }
+
+  .about__content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about__media {
+    height: 260px;
+    margin: 0 auto;
+  }
+
+  .about__text {
+    padding: 0;
+    background: none;
+  }
+
+  .about__text h2 {
+    font-size: 2rem;
+  }
+}   

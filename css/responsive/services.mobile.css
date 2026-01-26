@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+  .services {
+    padding: 100px 0;
+  }
+
+  .services__title {
+    font-size: 2.1rem;
+  }
+
+  .services__description {
+    margin-bottom: 48px;
+  }
+}   

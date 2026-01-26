@@ -1,0 +1,25 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+
+img { max-width:100%; display:block; }
+
+section { padding:120px 8vw; }
+
+/* animação base */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+/* quando entra na tela */
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* variação mais sutil (opcional) */
+[data-animate="soft"] {
+  transform: translateY(20px);
+}
