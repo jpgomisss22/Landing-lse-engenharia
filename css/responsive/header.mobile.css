@@ -1,9 +1,11 @@
 @media (max-width: 768px) {
   .header {
-    top: 12px;
-    height: 72px;
+    position: sticky;
+    top: 0;
+    transform: none;
+    width: 100%;
     padding: 0 20px;
-    border-radius: 16px;
+    border-radius: 0;
   }
 
   .header__content {

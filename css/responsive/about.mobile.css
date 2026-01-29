@@ -9,8 +9,11 @@
   }
 
   .about__media {
-    height: 260px;
-    margin: 0 auto;
+    height: 220px;
+  }
+
+   .about__image img {
+    object-fit: cover;
   }
 
   .about__text {
