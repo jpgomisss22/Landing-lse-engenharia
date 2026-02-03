@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================== */
   const menuBtn = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav");
+  const overlay = document.getElementById("nav-overlay");
 
   const toggleMenu = (forceState) => {
     if (!menuBtn || !nav) return;
@@ -70,6 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
     menuBtn.classList.toggle("is-active", isOpen);
     menuBtn.setAttribute("aria-expanded", String(isOpen));
     document.body.classList.toggle("nav-open", isOpen);
+    if (overlay) {
+      overlay.classList.toggle("is-visible", isOpen);
+      overlay.setAttribute("aria-hidden", String(!isOpen));
+    }
   };
 
   if (menuBtn && nav) {
@@ -79,16 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", () => toggleMenu(false));
     });
 
-    const desktopMedia = window.matchMedia("(min-width: 768px)");
-    if (desktopMedia.addEventListener) {
-      desktopMedia.addEventListener("change", (event) => {
-        if (event.matches) toggleMenu(false);
-      });
-    } else {
-      desktopMedia.addListener((event) => {
-        if (event.matches) toggleMenu(false);
-      });
+    if (overlay) {
+      overlay.addEventListener("click", () => toggleMenu(false));
     }
+
+    const desktopMedia = window.matchMedia("(min-width: 768px)");
+    desktopMedia.addEventListener("change", (e) => {
+      if (e.matches) toggleMenu(false);
+    });
   }
 
 });

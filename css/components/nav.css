@@ -69,45 +69,74 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-@media (max-width: 47.99rem) {
-  .has-js .nav {
+/* Overlay do menu lateral (mobile) */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+}
+
+@media (max-width: 767px) {
+  .nav-overlay {
+    display: block;
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: min(20rem, 82%);
-    height: 100%;
-    padding: var(--space-3xl) 1.75rem;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: var(--space-lg);
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(12px);
-    margin-left: auto;
+    inset: 0;
+    background: rgba(18, 24, 33, 0.4);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transform: translateX(24px);
-    transition: opacity var(--transition-base), transform var(--transition-base);
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 55;
+  }
+
+  .nav-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .has-js .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(18rem, 85%);
+    height: 100%;
+    padding: 1.5rem 1.25rem 2rem;
+    padding-top: max(1.5rem, env(safe-area-inset-top));
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    background: #fff;
+    box-shadow: 8px 0 32px rgba(12, 38, 64, 0.12);
     z-index: 60;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
   }
 
   .has-js .nav.is-open {
     display: flex;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
     transform: translateX(0);
-    box-shadow: -24px 0 60px rgba(12, 38, 64, 0.18);
   }
 
   .has-js .nav__link {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    padding: 0.85rem 0.5rem;
+    border-bottom: 1px solid rgba(12, 38, 64, 0.06);
+  }
+
+  .has-js .nav__link:last-child {
+    border-bottom: none;
   }
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
+  .nav-overlay {
+    display: none !important;
+  }
+
   .nav {
     gap: var(--space-lg);
     justify-content: center;
@@ -115,6 +144,13 @@
 
   .has-js .nav {
     display: flex;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
   }
 
   .menu-toggle,
