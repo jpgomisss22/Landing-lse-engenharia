@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.remove("no-js");
+  document.body.classList.add("has-js");
 
   /* =========================
      ANIMAÇÕES DE SEÇÃO
@@ -59,10 +61,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav");
 
+  const toggleMenu = (forceState) => {
+    if (!menuBtn || !nav) return;
+
+    const isOpen = typeof forceState === "boolean" ? forceState : !nav.classList.contains("is-open");
+
+    nav.classList.toggle("is-open", isOpen);
+    menuBtn.classList.toggle("is-active", isOpen);
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    document.body.classList.toggle("nav-open", isOpen);
+  };
+
   if (menuBtn && nav) {
-    menuBtn.addEventListener("click", () => {
-      nav.classList.toggle("is-open");
+    menuBtn.addEventListener("click", () => toggleMenu());
+
+    nav.querySelectorAll(".nav__link").forEach((link) => {
+      link.addEventListener("click", () => toggleMenu(false));
     });
+
+    const desktopMedia = window.matchMedia("(min-width: 768px)");
+    if (desktopMedia.addEventListener) {
+      desktopMedia.addEventListener("change", (event) => {
+        if (event.matches) toggleMenu(false);
+      });
+    } else {
+      desktopMedia.addListener((event) => {
+        if (event.matches) toggleMenu(false);
+      });
+    }
   }
 
 });

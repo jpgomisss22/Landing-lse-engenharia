@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme-toggle="dark">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,34 +13,40 @@
 
     <link rel="stylesheet" href="./css/main.css">
 </head>
-<body>
-    <header class="header">
+<body class="page no-js">
+    <header class="header" data-animate="soft">
   <div class="header__content">
     <a class="header__logo" href="#home">
       <img src="assets/img/logo.svg" alt="LSE Engenharia">
     </a>
 
-    <nav class="nav">
-      <a class="nav__link">Home</a>
-      <a class="nav__link">Empresa</a>
-      <a class="nav__link">Serviços</a>
-      <a class="nav__link">eSocial</a>
-    </nav>
-
-    <!-- Menu no Mobile-->
-    <button class="menu-toggle" aria-label="Abrir menu">
+    <button
+      class="menu-toggle"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      type="button"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <a href="https://api.whatsapp.com/send/?phone=5511966772845&text&type=phone_number&app_absent=0&utm_source=ig" class="btn btn--primary header__cta" >Contato</a>
+    <nav class="nav" id="primary-navigation" aria-label="Navegação principal">
+      <a class="nav__link" href="#home">Home</a>
+      <a class="nav__link" href="#empresa">Empresa</a>
+      <a class="nav__link" href="#servicos">Serviços</a>
+      <a class="nav__link" href="#esocial">eSocial</a>
+      <a class="nav__link" href="#contato">Contato</a>
+    </nav>
+
+    <a href="https://api.whatsapp.com/send/?phone=5511966772845&text&type=phone_number&app_absent=0&utm_source=ig" class="btn btn--primary header__cta">Contato</a>
   </div>
 </header>
 
 <main>
 
-<section class="hero" data-animate>
+<section class="hero" id="home" data-animate>
   <div class="hero__content">
 
     <div class="hero__text">
@@ -64,7 +70,7 @@
     </div>
 
     <div class="hero__image">
-      <img src="assets/img/foto-hero.jpeg" alt="Engenheiro da LSE Engenharia">
+      <img src="assets/img/foto-hero.jpeg" alt="Engenheiro da LSE Engenharia" decoding="async">
     </div>
 
   </div>
@@ -114,7 +120,7 @@
 </section>
 
 <!-- Serviços -->
-<section class="services" id="servicos" data-animate>
+<section class="services section--neutral" id="servicos" data-animate>
   <div class="services__content">
 
     <span class="section__eyebrow">Nossos serviços</span>
@@ -170,7 +176,7 @@
         </div>
       </article>
 
-      <article class="service__card" data-animate>
+      <article class="service__card" id="esocial" data-animate>
         <div class="service__image">
           <img src="assets/img/analista.png" alt="Gestão eSocial" loading="lazy">
         </div>
@@ -228,7 +234,7 @@
     </nav>
 
     <!-- CTA (DIREITA) -->
-    <div class="footer__cta">
+    <div class="footer__cta" id="contato">
       <h3>Precisa de um orçamento?</h3>
       <p>
         Fale com nossa equipe e receba uma proposta

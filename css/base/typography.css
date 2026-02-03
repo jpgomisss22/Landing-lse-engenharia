@@ -1,9 +1,39 @@
 body {
-  font-family: 'Inter', sans-serif;
-  background: white;
-  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-neutral-900);
+  background-color: #ffffff;
 }
 
-h1,h2 {
-  font-family: 'DM Sans', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-primary-900);
+}
+
+h1 {
+  font-size: clamp(2.25rem, 8vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+}
+
+p {
+  color: var(--color-neutral-700);
+  max-width: 65ch;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--color-primary-900);
 }

@@ -1,89 +1,105 @@
 .nav {
   display: flex;
-  gap: 36px;
-  justify-self: center;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-md);
 }
 
 .nav__link {
-  position: relative;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
-  padding: 8px 4px;
-  color: #2c2c2c;
+  color: var(--color-primary-900);
+  position: relative;
+  padding-bottom: 0.15rem;
 }
 
 .nav__link::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
-  width: 0;
+  bottom: 0;
+  width: 100%;
   height: 2px;
-  background: var(--accent);
-  transition: 0.3s ease;
+  background: var(--color-accent-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
 }
 
 .nav__link:hover::after,
 .nav__link.is-active::after {
-  width: 100%;
+  transform: scaleX(1);
 }
-
-.cta {
-  padding: 140px 0;
-}
-
-.cta h2 {
-  font-size: 2.4rem;
-  margin-bottom: 32px;
-}
-
-.nav__contact {
-  margin-left: 40px;
-  padding: 14px 26px;
-  border-radius: 14px;
-  background: rgba(242, 140, 40, 0.12);
-  color: #2c2c2c;
-  font-weight: 600;
-  transition: 0.3s ease;
-}
-
-.nav__contact:hover {
-  background: rgba(242, 140, 40, 0.22);
-}
-
-/* Menu Mobile*/
 
 .menu-toggle {
   display: none;
-  background: none;
-  border: 0;
-  cursor: pointer;
+  flex-direction: column;
   gap: 6px;
+  padding: 0.35rem;
+  cursor: pointer;
+}
+
+.has-js .menu-toggle {
+  display: flex;
 }
 
 .menu-toggle span {
   display: block;
-  width: 24px;
+  width: 26px;
   height: 2px;
-  background: #2c2c2c;
-  transition: 0.3s ease;
+  border-radius: 999px;
+  background: var(--color-primary-900);
+  transition: transform var(--transition-base), opacity var(--transition-base);
 }
 
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-  }
+.menu-toggle.is-active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
 
-  .nav.is-open {
+.menu-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 47.99rem) {
+  .has-js .nav {
     position: fixed;
     inset: 0;
-    background: white;
-    display: flex;
+    padding: var(--space-3xl) 1.5rem;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-    z-index: 2000;
+    gap: var(--space-xl);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+    z-index: 60;
+  }
+
+  .has-js .nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .has-js .nav__link {
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  .nav {
+    gap: var(--space-lg);
+  }
+
+  .menu-toggle {
+    display: none;
   }
 }
