@@ -77,16 +77,20 @@
   z-index: 55;
 }
 
+.nav-sidebar-brand {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .nav-overlay {
     display: block;
     position: fixed;
     inset: 0;
-    background: rgba(18, 24, 33, 0.4);
+    background: rgba(18, 24, 33, 0.5);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 55;
   }
 
@@ -96,24 +100,26 @@
     pointer-events: auto;
   }
 
+  /* Sidebar lateral – estilo do exemplo */
   .has-js .nav {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    width: min(18rem, 85%);
+    width: min(16rem, 78%);
     height: 100%;
-    padding: 1.5rem 1.25rem 2rem;
-    padding-top: max(1.5rem, env(safe-area-inset-top));
+    padding: 0;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
+    flex-wrap: nowrap;
     gap: 0;
-    background: #fff;
-    box-shadow: 8px 0 32px rgba(12, 38, 64, 0.12);
+    background: linear-gradient(180deg, #1a2634 0%, #0f1820 100%);
+    box-shadow: 12px 0 40px rgba(0, 0, 0, 0.3);
     z-index: 60;
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
   }
 
   .has-js .nav.is-open {
@@ -122,18 +128,50 @@
   }
 
   .has-js .nav__link {
-    font-size: 1.05rem;
-    padding: 0.85rem 0.5rem;
-    border-bottom: 1px solid rgba(12, 38, 64, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 1rem 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.2s ease, color 0.2s ease;
   }
 
-  .has-js .nav__link:last-child {
-    border-bottom: none;
+  .has-js .nav__link::after {
+    display: none;
+  }
+
+  .has-js .nav__link:hover,
+  .has-js .nav__link.is-active {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+
+  .has-js .nav__link:active {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-sidebar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem 1.25rem;
+    padding-top: max(1.5rem, env(safe-area-inset-top));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+  }
+
+  .nav-sidebar-brand img {
+    height: 2.5rem;
   }
 }
 
 @media (min-width: 768px) {
-  .nav-overlay {
+  .nav-overlay,
+  .nav-sidebar-brand {
     display: none !important;
   }
 
